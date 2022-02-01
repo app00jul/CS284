@@ -51,23 +51,23 @@ public class BinaryNumber {
     }
 
     public int[] getInnerArray(){
-        return this.data; //get the list that represents the binary number.
+        return data; //get the list that represents the binary number.
     }
 
     public static int[] bwor(BinaryNumber bn1, BinaryNumber bn2){
         if (bn1.getLength() != bn2.getLength()){ //check if both binary has the same length.
             return new int[0]; //if False, return an empty array.
         }
-        int[] bwor = new int[bn1.getLength()]; //create a new array, this array will be the final answer.
+        int[] result = new int[bn1.getLength()]; //create a new array, this array will be the final answer.
         for (int i = 0; i != bn1.getLength(); i ++){
             if (bn1.getDigit(i) == 0 && bn2.getDigit(i) == 0){ //check if both values are 0.
-                bwor[i] = 0; //if true, add 0 to the array.
+                result[i] = 0; //if true, add 0 to the array.
             }
             else{
-                bwor[i] = 1; //if false, add 1 to the array.
+                result[i] = 1; //if false, add 1 to the array.
             }
         }
-        return bwor; //return the result.
+        return result; //return the result.
     }
 
     public static int[] bwand(BinaryNumber bn1, BinaryNumber bn2){
@@ -144,36 +144,40 @@ public class BinaryNumber {
     }
 
     public void add(BinaryNumber aBinaryNumber){
-        if (this.length > aBinaryNumber.getLength()) {
-            int length = this.length - aBinaryNumber.getLength();
+        if (this.length > aBinaryNumber.length){
+            int length = this.length - aBinaryNumber.length;
             aBinaryNumber.prepend(length);
-        } else if (this.length < aBinaryNumber.getLength()) {
-            int length = aBinaryNumber.getLength() - this.length;
+        }
+        else if (this.length < aBinaryNumber.length){
+            int length = aBinaryNumber.length - this.length;
             this.prepend(length);
         }
         int[] addition_result = new int[this.length]; //make the result into its own array.
         int carry = 0; //add a carry.
         for (int i = this.length - 1; i > -1; i--) {
-            int adder = this.data[i] + aBinaryNumber.getDigit(i) + carry;
-            if (adder == 0) {
-                addition_result[i] = 0;
+            int raw_sum = this.data[i] + aBinaryNumber.getDigit(i) + carry;
+            if (raw_sum == 0) { //if the sum is 0.
+                addition_result[i] = 0; //if true, no addition result and carry.
                 carry = 0;
-            } else if (adder == 1) {
-                addition_result[i] = 1;
+            }
+            else if (raw_sum == 1) {  //if the sum is 1.
+                addition_result[i] = 1; //if true, make the output 1.
                 carry = 0;
-            } else if (adder == 2) {
-                addition_result[i] = 0;
+            }
+            else if (raw_sum == 2) { //if the sum is 2, which is not binary.
+                addition_result[i] = 0; //make answer 1 and carry 1.
                 carry = 1;
-            } else if (adder == 3) {
+            }
+            else if (raw_sum == 3) { //if the sum is 3.
                 addition_result[i] = 1;
-                carry = 1;
+                carry = 1; //make result 1 and carry 1.
             }
 
         }
         this.data = addition_result;
         this.length = addition_result.length;
 
-        if (carry == 1) {
+        if (carry == 1){
             this.prepend(1);
             this.data[0] = 1;
             this.length += 1;
