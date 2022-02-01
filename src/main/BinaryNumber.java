@@ -145,33 +145,33 @@ public class BinaryNumber {
 
     public void add(BinaryNumber aBinaryNumber){
         if (this.length > aBinaryNumber.getLength()) {
-            int l = this.length - aBinaryNumber.getLength();
-            aBinaryNumber.prepend(l);
+            int length = this.length - aBinaryNumber.getLength();
+            aBinaryNumber.prepend(length);
         } else if (this.length < aBinaryNumber.getLength()) {
-            int l = aBinaryNumber.getLength() - this.length;
-            this.prepend(l);
+            int length = aBinaryNumber.getLength() - this.length;
+            this.prepend(length);
         }
-        int[] binaryAdd = new int[this.length];
-        int carry = 0;
+        int[] addition_result = new int[this.length]; //make the result into its own array.
+        int carry = 0; //add a carry.
         for (int i = this.length - 1; i > -1; i--) {
             int adder = this.data[i] + aBinaryNumber.getDigit(i) + carry;
             if (adder == 0) {
-                binaryAdd[i] = 0;
+                addition_result[i] = 0;
                 carry = 0;
             } else if (adder == 1) {
-                binaryAdd[i] = 1;
+                addition_result[i] = 1;
                 carry = 0;
             } else if (adder == 2) {
-                binaryAdd[i] = 0;
+                addition_result[i] = 0;
                 carry = 1;
             } else if (adder == 3) {
-                binaryAdd[i] = 1;
+                addition_result[i] = 1;
                 carry = 1;
             }
 
         }
-        this.data = binaryAdd;
-        this.length = binaryAdd.length;
+        this.data = addition_result;
+        this.length = addition_result.length;
 
         if (carry == 1) {
             this.prepend(1);
