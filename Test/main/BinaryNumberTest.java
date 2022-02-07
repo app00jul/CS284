@@ -3,7 +3,6 @@ package main;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 class BinaryNumberTest {
     public BinaryNumber b1 = new BinaryNumber("10011");
