@@ -29,7 +29,7 @@ class BinaryNumberTest {
         int [] result;
         result = b1.getInnerArray();
         for (int i = 0; i != result.length; i++){
-            System.out.println(result[i]);
+            System.out.print(result[i]);
         }
     }
 
@@ -39,19 +39,19 @@ class BinaryNumberTest {
         int [] r1;
         r1 = BinaryNumber.bwor(b1,b2);
         for (int i = 0; i != r1.length; i++){
-            System.out.println(r1[i]);
+            System.out.print(r1[i]);
         }
         System.out.println("Result for bwor of b1 and b3: ");
         int [] r2;
         r2 = BinaryNumber.bwor(b1,b2);
         for (int i = 0; i != r2.length; i++){
-            System.out.println(r2[i]);
+            System.out.print(r2[i]);
         }
         System.out.println("Result for bwor of b2 and b3: ");
         int [] r3;
         r3 = BinaryNumber.bwor(b1,b2);
         for (int i = 0; i != r3.length; i++){
-            System.out.println(r3[i]);
+            System.out.print(r3[i]);
         }
     }
 
@@ -61,7 +61,7 @@ class BinaryNumberTest {
         int[] t1;
         t1 = BinaryNumber.bwand(b1,b2);
         for (int i = 0; i != t1.length; i++){
-            System.out.println(t1[i]);
+            System.out.print(t1[i]);
         }
     }
 

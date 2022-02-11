@@ -1,5 +1,5 @@
 /**
- * Name: Julian Noeske
+ * Name: Julian Noeske.
  * I pledge my honor that I have abided by the Stevens Honor System.
  */
 
@@ -34,6 +34,7 @@ public class IDLList<E>{
     private int size;
     private ArrayList<Node<E>> indices;
 
+    //Operations
     public IDLList(){
         this.head = null;
         this.tail = null;
@@ -43,10 +44,10 @@ public class IDLList<E>{
 
     public boolean add(int index, E elem){
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("From public boolean add_1");
         }
 
-        if (index == 0) { //Head
+        if (index == 0) {
             add(elem);
         } else {
             Node<E> current = indices.get(index);
@@ -60,10 +61,10 @@ public class IDLList<E>{
     }
 
     public boolean add(E elem){
-        if (head == null) { // Empty list
+        if (head == null) {
             head = new Node<E>(elem);
             tail = head;
-        } else if (head == tail) { // Singleton list
+        } else if (head == tail) {
             head = new Node<E>(elem, tail, null);
             tail.prev = head;
         } else {
@@ -75,4 +76,27 @@ public class IDLList<E>{
         size++;
         return true;
     }
+
+    public boolean append(E elem) {
+        if (head == null) { // Empty list
+            head = new Node<E>(elem);
+            tail = head;
+            size++;
+            return indices.add(head);
+        }
+
+        if (head == tail) { // Singleton list
+            tail = new Node<E>(elem, null, head);
+            head.next = tail;
+            size++;
+            return indices.add(tail);
+        }
+
+        tail.next = new Node<E>(elem, null, tail);
+        tail = tail.next;
+        size++;
+        return indices.add(tail);
+    }
+
+
 }
