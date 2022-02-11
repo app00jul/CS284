@@ -98,5 +98,11 @@ public class IDLList<E>{
         return indices.add(tail);
     }
 
+    public E getHead() {
+        // Empty list
+        if (head == null)
+            throw new IllegalArgumentException("Empty list!");
+        return head.data;
+    }
 
 }
