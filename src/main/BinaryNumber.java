@@ -172,8 +172,8 @@ public class BinaryNumber {
                 addition_result[i] = 1;
                 carry = 1; //make result 1 and carry 1.
             }
-
         }
+
         this.data = addition_result;
         this.length = addition_result.length;
 
