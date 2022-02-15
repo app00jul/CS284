@@ -7,24 +7,25 @@ package main;
 
 import java.util.ArrayList;
 
-public class IDLList<E>{
+public class IDLList<E> {
     //Inner class
-    private class Node<E>{
+    private class Node<E> {
         //Data field
         private E data;
         private Node<E> next;
         private Node<E> prev;
 
-        public Node(E elem){
+        //Constructors
+        public Node(E elem) { //this is a constructor that hold elem.
             this.data = elem;
-            next = null;
             prev = null;
+            next = null;
         }
 
-        public Node(E elem, Node<E> next, Node<E> prev) {
+        public Node(E elem, Node<E> prev, Node<E> next) { //this is a constructor that hold elem, prev, and next.
             this.data = elem;
-            this.next = next;
             this.prev = prev;
+            this.next = next;
         }
     }
 
@@ -35,21 +36,21 @@ public class IDLList<E>{
     private ArrayList<Node<E>> indices;
 
     //Operations
-    public IDLList(){
+    public IDLList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
         this.indices = new ArrayList<>();
     }
 
-    public boolean add(int index, E elem){
+    public boolean add(int index, E elem) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("From public boolean add_1");
         }
-
-        if (index == 0) {
+        else if (index == 0) {
             add(elem);
-        } else {
+        }
+        else {
             Node<E> current = indices.get(index);
             Node<E> newCurrent = new Node<>(elem, current, current.prev);
             current.prev.next = newCurrent;
@@ -60,7 +61,7 @@ public class IDLList<E>{
         return true;
     }
 
-    public boolean add(E elem){
+    public boolean add(E elem) {
         if (head == null) {
             head = new Node<E>(elem);
             tail = head;
@@ -98,11 +99,26 @@ public class IDLList<E>{
         return indices.add(tail);
     }
 
-    public E getHead() {
-        // Empty list
-        if (head == null)
-            throw new IllegalArgumentException("Empty list!");
-        return head.data;
+    public E get(int index){
+        return (tail.data); //like in python, return list[index].
+    }
+
+    public E getHead(){
+        if (head == null) { //if the list is empty.
+            throw new IllegalArgumentException("This is an empty list!"); //throw an error.
+        }
+        else {
+            return head.data; //return the head of the list.
+        }
+    }
+
+    public E getTail(){
+        if (tail == null) { //if the list is empty.
+            throw new IllegalArgumentException("This is an empty lst!"); // throw an error.
+        }
+        else {
+            return tail.data; //return the tail of the list.
+        }
     }
 
 }
