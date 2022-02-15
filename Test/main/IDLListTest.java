@@ -1,7 +1,31 @@
 package main;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 
 class IDLListTest {
 
+    @Test
+    void add() {
+    }
+
+    @Test
+    void testAdd() {
+    }
+
+    @Test
+    void append() {
+    }
+
+    @Test
+    void get() {
+    }
+
+    @Test
+    void getHead() {
+    }
+
+    @Test
+    void getTail() {
+    }
 }

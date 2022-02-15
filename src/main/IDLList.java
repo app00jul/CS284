@@ -43,12 +43,12 @@ public class IDLList<E> {
         this.indices = new ArrayList<>();
     }
 
-    public boolean add(int index, E elem) {
+    public boolean add(int index, E elem) { //this is a function that add a value at the index position.
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("From public boolean add_1");
+            throw new IndexOutOfBoundsException("The index should not be negative or greater than the length of the list.");
         }
         else if (index == 0) {
-            add(elem);
+            add(elem); //if the index is zero, just call the function add(E elem).
         }
         else {
             Node<E> current = indices.get(index);
@@ -62,13 +62,15 @@ public class IDLList<E> {
     }
 
     public boolean add(E elem) {
-        if (head == null) {
+        if (head == null) { //if the head is empty.
             head = new Node<E>(elem);
             tail = head;
-        } else if (head == tail) {
+        }
+        else if (head == tail) {
             head = new Node<E>(elem, tail, null);
             tail.prev = head;
-        } else {
+        }
+        else {
             head = new Node<E>(elem, head, null);
             head.next.prev = head;
         }
