@@ -114,13 +114,90 @@ public class IDLList<E> {
         }
     }
 
-    public E getTail(){
+    public E getLast(){
         if (tail == null) { //if the list is empty.
             throw new IllegalArgumentException("This is an empty lst!"); // throw an error.
         }
         else {
             return tail.data; //return the tail of the list.
         }
+    }
+
+    public int size(){
+        //// return the size of the list
+    }
+
+    public E remove() {
+        // if there is no head (head is null), throw IllegalStateException();
+
+        // if this list only has 1 node, return the data value of the head
+        // update the variable values of the data filed
+
+        // if more the one nodes:
+        //     get the oldhead of the list
+        //     if we remove the oldhead:
+        //         the new head will be oldhead.next
+        //         the prev of the new head will be null
+        //         update the values of the data fields if needed
+        //         return the data value of the head
+    }
+
+    /**
+     * This method removes and returns the element at the tail.
+     * Should throw an IllegalStateException if there is no such element.
+     * @return the data value of the tail being removed
+     */
+    public E removeLast() {
+        // if the list is empty, throw IllegalStateException()
+
+        // if only 1 node in the list, call remove()
+
+        // if more than 1 node
+        //     get the oldTail of the list
+        //     if we remove the oldtail:
+        //         the new tail will be oldtail.prev
+        //         the next of the new tail will be null
+        //         update the values of the data fields if needed
+        //         return the data value of the tail
+    }
+
+    /**
+     * This method removes and returns the element at the index.
+     * @param index the index of the element to be removed
+     * @return the data value of the node being removed
+     */
+    public E removeAt(int index) {
+        // if there is no such element: throw IllegalStateException.
+        // if the node is the head or the tail
+        // get current node (n), prev node of the current node (nPrev)
+        // and next node of the current node (nNext)
+        // if we remove the current node:
+        //       nPrev.next -> n.next
+        //       nNext.prev -> n.prev
+        //       update the variable values in data fields
+    }
+
+    /**
+     * This method removes the first occurrence of elem in the list
+     * @param elem
+     * @return returns true if elem was in the list, false if not.
+     */
+    public boolean remove(E elem) {
+        //if the list is empty : throw IllegalStateException()
+
+        // iterate from the head to the tail and compare every elem
+        // if the elem is found, remove and return true; else return false
+    }
+
+    /**
+     * This method resents a string representation of the list.
+     * @return a string
+     */
+    public String toString() {
+//        for example "9,8,7,6,5,4,3,2,1,0"
+//        start from the empty string
+//        add elem to the string
+//        can use + to do concatenation
     }
 
 }
