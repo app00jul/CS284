@@ -7,22 +7,22 @@ package main;
 
 import java.util.ArrayList;
 
-public class IDLList<E> {
+public class IDLList<E>{
     //Inner class
-    private class Node<E> {
+    private class Node<E>{
         //Data field
         private E data;
         private Node<E> next;
         private Node<E> prev;
 
         //Constructors
-        public Node(E elem) { //this is a constructor that hold elem.
+        public Node(E elem){ //this is a constructor that hold elem.
             this.data = elem;
             prev = null;
             next = null;
         }
 
-        public Node(E elem, Node<E> prev, Node<E> next) { //this is a constructor that hold elem, prev, and next.
+        public Node(E elem, Node<E> prev, Node<E> next){ //this is a constructor that hold elem, prev, and next.
             this.data = elem;
             this.prev = prev;
             this.next = next;
@@ -36,21 +36,21 @@ public class IDLList<E> {
     private ArrayList<Node<E>> indices;
 
     //Operations
-    public IDLList() {
+    public IDLList(){
         this.head = null;
         this.tail = null;
         this.size = 0;
         this.indices = new ArrayList<>();
     }
 
-    public boolean add(int index, E elem) { //this is a function that add a value at the index position.
-        if (index < 0 || index > size) {
+    public boolean add(int index, E elem){ //this is a function that add a value at the index position.
+        if (index < 0 || index > size){
             throw new IndexOutOfBoundsException("The index should not be negative or greater than the length of the list.");
         }
-        else if (index == 0) {
+        else if (index == 0){
             add(elem); //if the index is zero, just call the function add(E elem).
         }
-        else {
+        else{
             Node<E> current = indices.get(index);
             Node<E> newCurrent = new Node<>(elem, current, current.prev);
             current.prev.next = newCurrent;
@@ -61,12 +61,12 @@ public class IDLList<E> {
         return true;
     }
 
-    public boolean add(E elem) {
+    public boolean add(E elem){
         if (head == null) { //if the head is empty.
             head = new Node<E>(elem);
             tail = head;
         }
-        else if (head == tail) {
+        else if (head == tail){
             head = new Node<E>(elem, tail, null);
             tail.prev = head;
         }
@@ -80,15 +80,15 @@ public class IDLList<E> {
         return true;
     }
 
-    public boolean append(E elem) {
-        if (head == null) { // Empty list
+    public boolean append(E elem){
+        if (head == null){ // Empty list
             head = new Node<E>(elem);
             tail = head;
             size++;
             return indices.add(head);
         }
 
-        if (head == tail) { // Singleton list
+        if (head == tail){ // Singleton list
             tail = new Node<E>(elem, null, head);
             head.next = tail;
             size++;
@@ -106,30 +106,32 @@ public class IDLList<E> {
     }
 
     public E getHead(){
-        if (head == null) { //if the list is empty.
-            throw new IllegalArgumentException("This is an empty list!"); //throw an error.
+        if (head == null){ //if the list is empty.
+            throw new IllegalArgumentException("This is NO head!"); //throw an error.
         }
-        else {
+        else{
             return head.data; //return the head of the list.
         }
     }
 
     public E getLast(){
-        if (tail == null) { //if the list is empty.
-            throw new IllegalArgumentException("This is an empty lst!"); // throw an error.
+        if (tail == null){ //if the list is empty.
+            throw new IllegalArgumentException("This is NO tail!"); // throw an error.
         }
-        else {
+        else{
             return tail.data; //return the tail of the list.
         }
     }
 
     public int size(){
-        //// return the size of the list
+        return size;
     }
 
-    public E remove() {
+    public E remove(){
         // if there is no head (head is null), throw IllegalStateException();
-
+        if (head == null){
+            throw new IllegalArgumentException("This is NO head");
+        }
         // if this list only has 1 node, return the data value of the head
         // update the variable values of the data filed
 
@@ -140,6 +142,21 @@ public class IDLList<E> {
         //         the prev of the new head will be null
         //         update the values of the data fields if needed
         //         return the data value of the head
+        if (head == tail){
+            Node<E> temp = head;
+            head = null;
+            tail = null;
+            size--;
+            indices.clear();
+            return temp.data;
+        }
+        else{
+            Node<E> temp = head;
+            head = head.next;
+            indices.remove(0);
+            size--;
+            return temp.data;
+        }
     }
 
     /**
@@ -149,9 +166,13 @@ public class IDLList<E> {
      */
     public E removeLast() {
         // if the list is empty, throw IllegalStateException()
-
+        if (head == null){
+            throw new IllegalArgumentException("This list is empty!");
+        }
         // if only 1 node in the list, call remove()
-
+        if (head == tail){
+            return remove();
+        }
         // if more than 1 node
         //     get the oldTail of the list
         //     if we remove the oldtail:
@@ -159,6 +180,13 @@ public class IDLList<E> {
         //         the next of the new tail will be null
         //         update the values of the data fields if needed
         //         return the data value of the tail
+        else{
+            Node<E> temp = tail;
+            tail = tail.prev;
+            indices.remove(size - 1);
+            size--;
+            return temp.data;
+        }
     }
 
     /**
