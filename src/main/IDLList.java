@@ -56,7 +56,7 @@ public class IDLList<E>{
             Node<E> new_first = new Node<E>(elem,null,old_first);
             head = new_first;
             old_first.prev = new_first;
-            size ++;
+            size += 1;
             indices.add(null);
             for (int i = indices.size()-1; i>0; i--){
                 indices.set((i),indices.get(i-1));
@@ -78,7 +78,7 @@ public class IDLList<E>{
             Node<E> newCurrent = new Node<>(elem, current, current.prev);
             current.prev.next = newCurrent;
             current.prev = newCurrent;
-            size++;
+            size += 1;
             indices.add(index, newCurrent);
         }
         return true;
@@ -88,20 +88,20 @@ public class IDLList<E>{
         if (head == null){ // Empty list
             head = new Node<E>(elem);
             tail = head;
-            size++;
+            size += 1;
             return indices.add(head);
         }
 
         if (head == tail){ // Singleton list
             tail = new Node<E>(elem, null, head);
             head.next = tail;
-            size++;
+            size += 1;
             return indices.add(tail);
         }
 
         tail.next = new Node<E>(elem, null, tail);
         tail = tail.next;
-        size++;
+        size += 1;
         return indices.add(tail);
     }
 
@@ -147,7 +147,7 @@ public class IDLList<E>{
             Node<E> temp = head;
             head = null;
             tail = null;
-            size--;
+            size -= 1;
             indices.clear();
             return temp.data;
         }
@@ -155,7 +155,7 @@ public class IDLList<E>{
             Node<E> temp = head;
             head = head.next;
             indices.remove(0);
-            size--;
+            size -= 1;
             return temp.data;
         }
     }
@@ -167,7 +167,7 @@ public class IDLList<E>{
      */
     public E removeLast() {
         // if the list is empty, throw IllegalStateException()
-        if (head == null){
+        if (this.indices.isEmpty()){
             throw new IllegalArgumentException("This list is empty!");
         }
         // if only 1 node in the list, call remove()
@@ -185,7 +185,7 @@ public class IDLList<E>{
             Node<E> temp = tail;
             tail = tail.prev;
             indices.remove(size - 1);
-            size--;
+            size -= 1;
             return temp.data;
         }
     }
@@ -204,11 +204,10 @@ public class IDLList<E>{
         if (index == 0){
             return remove();
         }
-
         Node<E> current = indices.remove(index);
         current.prev.next = current.next;
         current.next.prev = current.prev;
-        size--;
+        size -= 1;
         return current.data;
     }
 
@@ -219,7 +218,7 @@ public class IDLList<E>{
      */
     public boolean remove(E elem) {
         //if the list is empty : throw IllegalStateException()
-        if (head == null){
+        if (this.indices.isEmpty()){
             throw new IllegalStateException("This list is empty!");
         }
         // iterate from the head to the tail and compare every elem
@@ -230,7 +229,7 @@ public class IDLList<E>{
                 current.prev.next = current.next;
                 current.next.prev = current.prev;
                 indices.remove(index);
-                size--;
+                size -= 1;
                 return true;
             }
             current = current.next;
@@ -245,14 +244,14 @@ public class IDLList<E>{
      * This method resents a string representation of the list.
      * @return a string
      */
-    public String toString() {
+    public String toString(){
     //for example "9,8,7,6,5,4,3,2,1,0"
     //start from the empty string
     //add elem to the string
     //can use + to do concatenation
         Node<E> current_elem = head;
         String str = "";
-        while (current_elem != null) {
+        while (current_elem != null){
             str = str + current_elem.data + ",";
             current_elem = current_elem.next;
         }
