@@ -44,7 +44,7 @@ public class IDLList<E>{
     }
 
     public boolean add(E elem){
-        if (this.indices.isEmpty()) { //if the head is empty.
+        if (this.indices.isEmpty()) {
             Node<E> new_node = new Node<E>(elem);
             head = new_node;
             tail = new_node;
