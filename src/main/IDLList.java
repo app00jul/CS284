@@ -43,6 +43,29 @@ public class IDLList<E>{
         this.indices = new ArrayList<>();
     }
 
+    public boolean add(E elem){
+        if (this.indices.isEmpty()) { //if the head is empty.
+            Node<E> new_node = new Node<E>(elem);
+            head = new_node;
+            tail = new_node;
+            indices.add(new_node);
+            size = 1;
+        }
+        else {
+            Node<E> old_first = indices.get(0);
+            Node<E> new_first = new Node<E>(elem,null,old_first);
+            head = new_first;
+            old_first.prev = new_first;
+            size ++;
+            indices.add(null);
+            for (int i = indices.size()-1; i>0; i--){
+                indices.set((i),indices.get(i-1));
+            }
+            indices.set(0,new_first);
+        }
+        return true;
+    }
+
     public boolean add(int index, E elem){ //this is a function that add a value at the index position.
         if (index < 0 || index > size){
             throw new IndexOutOfBoundsException("The index should not be negative or greater than the length of the list.");
@@ -58,25 +81,6 @@ public class IDLList<E>{
             size++;
             indices.add(index, newCurrent);
         }
-        return true;
-    }
-
-    public boolean add(E elem){
-        if (head == null) { //if the head is empty.
-            head = new Node<E>(elem);
-            tail = head;
-        }
-        else if (head == tail){
-            head = new Node<E>(elem, tail, null);
-            tail.prev = head;
-        }
-        else {
-            head = new Node<E>(elem, head, null);
-            head.next.prev = head;
-        }
-
-        indices.add(0, head);
-        size++;
         return true;
     }
 
@@ -106,7 +110,7 @@ public class IDLList<E>{
     }
 
     public E getHead(){
-        if (head == null){ //if the list is empty.
+        if (this.indices.isEmpty()){ //if the list is empty.
             throw new IllegalArgumentException("This is NO head!"); //throw an error.
         }
         else{
@@ -115,8 +119,8 @@ public class IDLList<E>{
     }
 
     public E getLast(){
-        if (tail == null){ //if the list is empty.
-            throw new IllegalArgumentException("This is NO tail!"); // throw an error.
+        if (this.indices.isEmpty()) {
+            throw new IllegalStateException("This list is empty");
         }
         else{
             return tail.data; //return the tail of the list.
@@ -132,9 +136,6 @@ public class IDLList<E>{
         if (head == null){
             throw new IllegalArgumentException("This is NO head");
         }
-        // if this list only has 1 node, return the data value of the head
-        // update the variable values of the data filed
-
         // if more the one nodes:
         //     get the oldhead of the list
         //     if we remove the oldhead:
@@ -196,13 +197,19 @@ public class IDLList<E>{
      */
     public E removeAt(int index) {
         // if there is no such element: throw IllegalStateException.
-        // if the node is the head or the tail
-        // get current node (n), prev node of the current node (nPrev)
-        // and next node of the current node (nNext)
-        // if we remove the current node:
-        //       nPrev.next -> n.next
-        //       nNext.prev -> n.prev
-        //       update the variable values in data fields
+        if (index < 0 || index > size) {
+            throw new IllegalStateException("Such index doesn't exist.");
+        }
+
+        if (index == 0){
+            return remove();
+        }
+
+        Node<E> current = indices.remove(index);
+        current.prev.next = current.next;
+        current.next.prev = current.prev;
+        size--;
+        return current.data;
     }
 
     /**
@@ -212,8 +219,25 @@ public class IDLList<E>{
      */
     public boolean remove(E elem) {
         //if the list is empty : throw IllegalStateException()
-
+        if (head == null){
+            throw new IllegalStateException("This list is empty!");
+        }
         // iterate from the head to the tail and compare every elem
+        Node<E> current = head;
+        int index = 0;
+        while (current != null) {
+            if (current.data.equals(elem)) {
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+                indices.remove(index);
+                size--;
+                return true;
+            }
+            current = current.next;
+            index++;
+        }
+
+        return false;
         // if the elem is found, remove and return true; else return false
     }
 
@@ -222,10 +246,16 @@ public class IDLList<E>{
      * @return a string
      */
     public String toString() {
-//        for example "9,8,7,6,5,4,3,2,1,0"
-//        start from the empty string
-//        add elem to the string
-//        can use + to do concatenation
+    //for example "9,8,7,6,5,4,3,2,1,0"
+    //start from the empty string
+    //add elem to the string
+    //can use + to do concatenation
+        Node<E> current_elem = head;
+        String str = "";
+        while (current_elem != null) {
+            str = str + current_elem.data + ",";
+            current_elem = current_elem.next;
+        }
+        return str;
     }
-
 }
