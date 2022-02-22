@@ -277,14 +277,7 @@ public class IDLList<E>{
         if (this.indices.isEmpty()){
             throw new IllegalStateException("This list is empty!");
         }
-        if (elem.equals(head.data)) { // remove the first element
-            remove();
-            return true;
-        }
-        else if (elem.equals(tail.data)) { // remove the last element
-            removeLast();
-            return true;
-        }
+
         // iterate from the head to the tail and compare every elem
         // if the elem is found, remove and return true;
         Node<E> current = head;
