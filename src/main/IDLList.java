@@ -43,35 +43,6 @@ public class IDLList<E>{
         this.indices = new ArrayList<>();
     }
 
-    public boolean add(int index, E elem){ //this is a function that add a value at the index position.
-        // Invalid index, throw IndexOutOfBoundsException()
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
-        }
-        // if the index is 0, use the add(E elem) to add elem at head
-        if (index == 0) { //Head
-            add(elem);
-        }
-        // else if the index is this.size - 1, the elem is added at the tail
-        else if (this.size == -1){
-            append(elem);
-        }
-        // else:
-        //     get the current node at the input index and the prev node of current node
-        //     create a new node: prev -> prev node of current node
-        //                        next -> current node
-        //     for the prev node of current node: the next of it is the new node
-        //     for the current node: the prev is the new node
-        else {
-            Node<E> current = indices.get(index);
-            Node<E> newCurrent = new Node<>(elem, current, current.prev);
-            current.prev.next = newCurrent;
-            current.prev = newCurrent;
-            size++;
-            indices.add(index, newCurrent);
-        }
-        return true;
-    }
 
     public boolean add(E elem){
         if (indices.isEmpty()) {
@@ -102,6 +73,38 @@ public class IDLList<E>{
         return true;
     }
 
+
+    public boolean add(int index, E elem){ //this is a function that add a value at the index position.
+        // Invalid index, throw IndexOutOfBoundsException()
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException();
+        }
+        // if the index is 0, use the add(E elem) to add elem at head
+        if (index == 0) { //Head
+            add(elem);
+        }
+        // else if the index is this.size - 1, the elem is added at the tail
+        else if (this.size == -1){
+            append(elem);
+        }
+        // else:
+        //     get the current node at the input index and the prev node of current node
+        //     create a new node: prev -> prev node of current node
+        //                        next -> current node
+        //     for the prev node of current node: the next of it is the new node
+        //     for the current node: the prev is the new node
+        else {
+            Node<E> current = indices.get(index);
+            Node<E> newCurrent = new Node<>(elem, current, current.prev);
+            current.prev.next = newCurrent;
+            current.prev = newCurrent;
+            size++;
+            indices.add(index, newCurrent);
+        }
+        return true;
+    }
+
+
     public boolean append(E elem){
         if (head == null){ // Empty list
             head = new Node<E>(elem);
@@ -123,6 +126,7 @@ public class IDLList<E>{
         return indices.add(tail);
     }
 
+
     public E get(int index){
         if (index < 0 || index > size){
             throw new IllegalArgumentException();
@@ -138,7 +142,7 @@ public class IDLList<E>{
             {
                 if (count == index)
                     return current.data;
-                count++;
+                count += 1;
                 current = current.next;
             }
 
@@ -149,6 +153,7 @@ public class IDLList<E>{
         }
     }
 
+
     public E getHead(){
         if (head == null){ //if the list is empty.
             throw new IllegalArgumentException("This is NO head!"); //throw an error.
@@ -157,6 +162,7 @@ public class IDLList<E>{
             return head.data; //return the head of the list.
         }
     }
+
 
     public E getLast(){
         if (tail == null){ //if the list is empty.
@@ -167,9 +173,11 @@ public class IDLList<E>{
         }
     }
 
+
     public int size(){
         return size;
     }
+
 
     public E remove(){
         // if there is no head (head is null), throw IllegalStateException();
@@ -202,6 +210,7 @@ public class IDLList<E>{
         }
     }
 
+
     /**
      * This method removes and returns the element at the tail.
      * Should throw an IllegalStateException if there is no such element.
@@ -209,22 +218,11 @@ public class IDLList<E>{
      */
     public E removeLast() {
         // if the list is empty, throw IllegalStateException()
-
-        // if only 1 node in the list, call remove()
-
-        // if more than 1 node
-        //     get the oldTail of the list
-        //     if we remove the oldtail:
-        //         the new tail will be oldtail.prev
-        //         the next of the new tail will be null
-        //         update the values of the data fields if needed
-        //         return the data value of the tail
-
         if (head == null) { //Empty list
             throw new IllegalStateException();
         }
-
-        if (head == tail) { //Singleton list
+        // if only 1 node in the list, call remove()
+        else if (head == tail) { //Singleton list
             Node<E> temp = tail;
             head = null;
             tail = null;
@@ -232,14 +230,23 @@ public class IDLList<E>{
             indices.clear();
             return temp.data;
         }
-
-        Node<E> temp = tail;
-        tail = tail.prev;
-        tail.next = null;
-        indices.remove(size - 1);
-        size--;
-        return temp.data;
+        // if more than 1 node
+        //     get the oldTail of the list
+        //     if we remove the oldtail:
+        //         the new tail will be oldtail.prev
+        //         the next of the new tail will be null
+        //         update the values of the data fields if needed
+        //         return the data value of the tail
+        else {
+            Node<E> temp = tail;
+            tail = tail.prev;
+            tail.next = null;
+            indices.remove(size - 1);
+            size -= 1;
+            return temp.data;
+        }
     }
+
 
     /**
      * This method removes and returns the element at the index.
@@ -248,31 +255,31 @@ public class IDLList<E>{
      */
     public E removeAt(int index) {
         // if there is no such element: throw IllegalStateException.
+        if (index < 0 || index > size) { //Illegal index
+            throw new IllegalStateException("Illegal Index!");
+        }
         // if the node is the head or the tail
         // get current node (n), prev node of the current node (nPrev)
         // and next node of the current node (nNext)
+        if (index == 0) { // Head
+            return remove();
+        }
+        else if (index == size - 1) { // Tail
+            return removeLast();
+        }
         // if we remove the current node:
         //       nPrev.next -> n.next
         //       nNext.prev -> n.prev
         //       update the variable values in data fields
-        if (index < 0 || index > size) { //Illegal index
-            throw new IllegalStateException("Illegal Index!");
+        else {
+            Node<E> current = indices.remove(index);
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+            size -= 1;
+            return current.data;
         }
-
-        if (index == 0) { // Head
-            return remove();
-        }
-
-        if (index == size - 1) { // Tail
-            return removeLast();
-        }
-
-        Node<E> current = indices.remove(index);
-        current.prev.next = current.next;
-        current.next.prev = current.prev;
-        size--;
-        return current.data;
     }
+
 
     /**
      * This method removes the first occurrence of elem in the list
@@ -281,19 +288,19 @@ public class IDLList<E>{
      */
     public boolean remove(E elem) {
         //if the list is empty : throw IllegalStateException()
-
-        // iterate from the head to the tail and compare every elem
-        // if the elem is found, remove and return true; else return false
+        if (this.indices.isEmpty()){
+            throw new IllegalStateException();
+        }
         if (elem.equals(head.data)) { // remove the first element
             remove();
             return true;
         }
-
-        if (elem.equals(tail.data)) { // remove the last element
+        else if (elem.equals(tail.data)) { // remove the last element
             removeLast();
             return true;
         }
-
+        // iterate from the head to the tail and compare every elem
+        // if the elem is found, remove and return true;
         Node<E> current = head;
         int index = 0;
         while (current != null) {
@@ -301,25 +308,26 @@ public class IDLList<E>{
                 current.prev.next = current.next;
                 current.next.prev = current.prev;
                 indices.remove(index);
-                size--;
+                size -= 1;
                 return true;
             }
             current = current.next;
-            index++;
+            index += 1;
         }
-
+        //else return false
         return false;
     }
+
 
     /**
      * This method resents a string representation of the list.
      * @return a string
      */
     public String toString() {
-//        for example "9,8,7,6,5,4,3,2,1,0"
-//        start from the empty string
-//        add elem to the string
-//        can use + to do concatenation
+    //for example "9,8,7,6,5,4,3,2,1,0"
+    //start from the empty string
+    //add elem to the string
+    //can use + to do concatenation
         Node<E> current = head;
         String s = "";
         while (current != null) {
@@ -329,5 +337,4 @@ public class IDLList<E>{
         s.substring(0,s.length()-2);
         return s;
     }
-
 }
