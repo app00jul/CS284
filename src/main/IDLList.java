@@ -65,7 +65,7 @@ public class IDLList<E>{
             oldfirst.prev = newfirst;
             size += 1;
             indices.add(null);
-            for (int i = indices.size()-1; i>0; i--) {
+            for (int i = indices.size()-1; i > 0; i--) {
                 indices.set((i),indices.get(i-1));
             }
             indices.set(0, newfirst);
@@ -106,24 +106,23 @@ public class IDLList<E>{
 
 
     public boolean append(E elem){
-        if (head == null){ // Empty list
-            head = new Node<E>(elem);
-            tail = head;
-            size++;
-            return indices.add(head);
+        // if the list is empty -> call add(elem)
+        if (this.indices.isEmpty()){
+            return add(elem);
         }
-
-        if (head == tail){ // Singleton list
-            tail = new Node<E>(elem, null, head);
-            head.next = tail;
-            size++;
+        // else:
+        // get the old last node (which is also the tail)
+        // create a new node: prev -> last node
+        //                    next -> last node's next
+        // for the old last node: the next of it is the new node
+        // now the last node is the new node
+        // update the indices and the size of the IDLList
+        else {
+            tail.next = new Node<E>(elem, null, tail);
+            tail = tail.next;
+            size += 1;
             return indices.add(tail);
         }
-
-        tail.next = new Node<E>(elem, null, tail);
-        tail = tail.next;
-        size++;
-        return indices.add(tail);
     }
 
 
@@ -135,8 +134,7 @@ public class IDLList<E>{
             return (head.data); //like in python, return list[index].
         }
         else {
-            int count = 0; /* index of Node we are
-                          currently looking at */
+            int count = 0;
             Node<E> current = head;
             while (current != null)
             {
@@ -145,18 +143,14 @@ public class IDLList<E>{
                 count += 1;
                 current = current.next;
             }
-
-        /* if we get to this line, the caller was asking
-        for a non-existent element so we assert fail */
-            assert (false);
             return current.data;
         }
     }
 
 
     public E getHead(){
-        if (head == null){ //if the list is empty.
-            throw new IllegalArgumentException("This is NO head!"); //throw an error.
+        if (this.indices.isEmpty()){ //if the list is empty.
+            throw new IllegalArgumentException("This list is empty!"); //throw an error.
         }
         else{
             return head.data; //return the head of the list.
@@ -165,8 +159,8 @@ public class IDLList<E>{
 
 
     public E getLast(){
-        if (tail == null){ //if the list is empty.
-            throw new IllegalArgumentException("This is NO tail!"); // throw an error.
+        if (this.indices.isEmpty()){ //if the list is empty.
+            throw new IllegalArgumentException("This list is empty!"); // throw an error.
         }
         else{
             return tail.data; //return the tail of the list.
@@ -190,7 +184,7 @@ public class IDLList<E>{
             Node<E> temp = head;
             head = null;
             tail = null;
-            size--;
+            size -= 1;
             indices.clear();
             return temp.data;
         }
@@ -205,7 +199,7 @@ public class IDLList<E>{
             Node<E> temp = head;
             head = head.next;
             indices.remove(0);
-            size--;
+            size -= 1;
             return temp.data;
         }
     }
@@ -329,12 +323,12 @@ public class IDLList<E>{
     //add elem to the string
     //can use + to do concatenation
         Node<E> current = head;
-        String s = "";
-        while (current != null) {
-            s = s + current.data + ",";
+        String str = "";
+        while (current != tail) {
+            str = str + current.data + ",";
             current = current.next;
         }
-        s.substring(0,s.length()-2);
-        return s;
+        str = str + current.data;
+        return str;
     }
 }
