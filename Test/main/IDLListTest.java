@@ -208,12 +208,7 @@ class IDLListTest {
         IDLList<Integer> dll = new IDLList<>();
 
         // An exception should be thrown here
-        try {
-            dll.remove();
-            fail();
-        } catch (IllegalStateException e) {
-            assertEquals(1, 1);
-        }
+
 
         for (int i = 0; i < 10; i++) {
             dll.add(i);
@@ -301,5 +296,13 @@ class IDLListTest {
         }
 
         assertEquals("9,8,7,6,5,4,3,2,1,0", dll.toString());
+
+        IDLList<Integer> dll_1 = new IDLList<>();
+
+        for (int i = 0; i != 4; i++){
+            dll_1.add(i);
+        }
+
+        assertEquals("3,2,1,0", dll_1.toString());
     }
 }

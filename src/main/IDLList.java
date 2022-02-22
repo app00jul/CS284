@@ -46,7 +46,7 @@ public class IDLList<E>{
 
     public boolean add(E elem){
         if (indices.isEmpty()) {
-            Node <E> newNode = new Node <E> (elem, null, null);
+            Node<E> newNode = new Node<E>(elem, null, null);
             head = newNode;
             tail = newNode;
             indices.add(newNode);
@@ -59,8 +59,8 @@ public class IDLList<E>{
         //     the next of this new node point to the old first node
         //     the prev of the oldfirst node point to the new node.
         else {
-            Node <E> oldfirst = indices.get(0);
-            Node <E> newfirst = new Node <E>(elem, null, oldfirst);
+            Node<E> oldfirst = indices.get(0);
+            Node<E> newfirst = new Node<E>(elem, null, oldfirst);
             head = newfirst;
             oldfirst.prev = newfirst;
             size += 1;
@@ -77,7 +77,7 @@ public class IDLList<E>{
     public boolean add(int index, E elem){ //this is a function that add a value at the index position.
         // Invalid index, throw IndexOutOfBoundsException()
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("This index is invalid!");
         }
         // if the index is 0, use the add(E elem) to add elem at head
         if (index == 0) { //Head
@@ -95,10 +95,10 @@ public class IDLList<E>{
         //     for the current node: the prev is the new node
         else {
             Node<E> current = indices.get(index);
-            Node<E> newCurrent = new Node<>(elem, current, current.prev);
+            Node<E> newCurrent = new Node<E>(elem, current, current.prev);
             current.prev.next = newCurrent;
             current.prev = newCurrent;
-            size++;
+            size += 1;
             indices.add(index, newCurrent);
         }
         return true;
@@ -120,26 +120,23 @@ public class IDLList<E>{
         else {
             tail.next = new Node<E>(elem, null, tail);
             tail = tail.next;
-            size += 1;
-            return indices.add(tail);
         }
+        size += 1;
+        return indices.add(tail);
     }
 
 
     public E get(int index){
         if (index < 0 || index > size){
-            throw new IllegalArgumentException();
-        }
-        else if (index == 0){
-            return (head.data); //like in python, return list[index].
+            throw new IllegalArgumentException("Index is invalid!");
         }
         else {
             int count = 0;
             Node<E> current = head;
-            while (current != null)
-            {
-                if (count == index)
+            while (current != null) {
+                if (count == index) {
                     return current.data;
+                }
                 count += 1;
                 current = current.next;
             }
@@ -181,12 +178,12 @@ public class IDLList<E>{
         // if this list only has 1 node, return the data value of the head
         // update the variable values of the data filed
         else if (head == tail){
-            Node<E> temp = head;
+            Node<E> head_holder = head;
             head = null;
             tail = null;
             size -= 1;
             indices.clear();
-            return temp.data;
+            return head_holder.data;
         }
         // if more the one nodes:
         //     get the oldhead of the list
@@ -196,11 +193,11 @@ public class IDLList<E>{
         //         update the values of the data fields if needed
         //         return the data value of the head
         else{
-            Node<E> temp = head;
+            Node<E> head_holder = head;
             head = head.next;
             indices.remove(0);
             size -= 1;
-            return temp.data;
+            return head_holder.data;
         }
     }
 
@@ -212,17 +209,12 @@ public class IDLList<E>{
      */
     public E removeLast() {
         // if the list is empty, throw IllegalStateException()
-        if (head == null) { //Empty list
-            throw new IllegalStateException();
+        if (this.indices.isEmpty()) { //Empty list
+            throw new IllegalStateException("This list is empty!");
         }
         // if only 1 node in the list, call remove()
-        else if (head == tail) { //Singleton list
-            Node<E> temp = tail;
-            head = null;
-            tail = null;
-            size = 0;
-            indices.clear();
-            return temp.data;
+        else if (head == tail) {
+            return remove();
         }
         // if more than 1 node
         //     get the oldTail of the list
@@ -232,12 +224,12 @@ public class IDLList<E>{
         //         update the values of the data fields if needed
         //         return the data value of the tail
         else {
-            Node<E> temp = tail;
+            Node<E> tail_holder = tail;
             tail = tail.prev;
             tail.next = null;
             indices.remove(size - 1);
             size -= 1;
-            return temp.data;
+            return tail_holder.data;
         }
     }
 
@@ -250,7 +242,7 @@ public class IDLList<E>{
     public E removeAt(int index) {
         // if there is no such element: throw IllegalStateException.
         if (index < 0 || index > size) { //Illegal index
-            throw new IllegalStateException("Illegal Index!");
+            throw new IllegalStateException("This index is invalid!");
         }
         // if the node is the head or the tail
         // get current node (n), prev node of the current node (nPrev)
@@ -283,7 +275,7 @@ public class IDLList<E>{
     public boolean remove(E elem) {
         //if the list is empty : throw IllegalStateException()
         if (this.indices.isEmpty()){
-            throw new IllegalStateException();
+            throw new IllegalStateException("This list is empty!");
         }
         if (elem.equals(head.data)) { // remove the first element
             remove();
