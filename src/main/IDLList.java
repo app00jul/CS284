@@ -95,11 +95,17 @@ public class IDLList<E>{
         //     for the current node: the prev is the new node
         else {
             Node<E> current = indices.get(index);
-            Node<E> newCurrent = new Node<E>(elem, current, current.prev);
-            current.prev.next = newCurrent;
-            current.prev = newCurrent;
+            Node<E> prev_node = (indices.get(index).prev);
+            Node<E> new_node = new Node<E>(elem, prev_node, current);
+            prev_node.next = new_node;
+            current.prev = new_node;
             size += 1;
-            indices.add(index, newCurrent);
+            indices.add(null);
+            for (int i = indices.size() - 1; i > index; i--) {
+                indices.set((i), indices.get(i - 1));
+            }
+            indices.set(index, new_node);
+
         }
         return true;
     }
@@ -130,15 +136,22 @@ public class IDLList<E>{
         if (index < 0 || index > size){
             throw new IllegalArgumentException("Index is invalid!");
         }
+        else if (index == 0){
+            return head.data;
+        }
+        else if (index == size-1){
+            return tail.data;
+        }
         else {
             int count = 0;
             Node<E> current = head;
             while (current != null) {
                 if (count == index) {
                     return current.data;
+                } else {
+                    count += 1;
+                    current = current.next;
                 }
-                count += 1;
-                current = current.next;
             }
             return current.data;
         }
@@ -173,7 +186,7 @@ public class IDLList<E>{
     public E remove(){
         // if there is no head (head is null), throw IllegalStateException();
         if (head == null){
-            throw new IllegalArgumentException("This is NO head");
+            throw new IllegalStateException("This is NO head");
         }
         // if this list only has 1 node, return the data value of the head
         // update the variable values of the data filed
@@ -277,7 +290,14 @@ public class IDLList<E>{
         if (this.indices.isEmpty()){
             throw new IllegalStateException("This list is empty!");
         }
-
+        if (elem.equals(head.data)) { // remove the first element
+            remove();
+            return true;
+        }
+        else if (elem.equals(tail.data)) { // remove the last element
+            removeLast();
+            return true;
+        }
         // iterate from the head to the tail and compare every elem
         // if the elem is found, remove and return true;
         Node<E> current = head;

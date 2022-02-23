@@ -13,6 +13,7 @@ class IDLListTest {
         for (int i = 1; i < 10; i++) {
             dll.add(2*i);
         }
+        System.out.println(dll);
 
         dll.add(3, 5);
         assertEquals(Integer.valueOf(5), dll.get(3));
@@ -23,6 +24,7 @@ class IDLListTest {
         dll.append(30);
         assertEquals(Integer.valueOf(30), dll.get(dll.size()-1));
 
+        assertEquals(11,dll.size()-1);
         dll.add(dll.size()-1, 100);
         assertEquals(Integer.valueOf(100), dll.get(dll.size()-1));
 
