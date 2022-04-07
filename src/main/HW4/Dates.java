@@ -5,9 +5,9 @@ public class Dates implements Comparable<Dates>{
 
     public int compareTo(Dates Other_Date){
         if (this.day > Other_Date.day){
-            return 1;
-        } else if (this.day < Other_Date.day){
             return -1;
+        } else if (this.day < Other_Date.day){
+            return 1;
         } else {
             return 0;
         }
