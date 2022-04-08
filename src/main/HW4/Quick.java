@@ -1,8 +1,16 @@
 package main.HW4;
 
+import java.util.Random;
+
 public class Quick{
     public static void shuffling(Comparable [] a){
+        Random rn = new Random();
+        int lth = a.length;
 
+        for (int i = lth; i > 0; i --){
+            int j = rn.nextInt(i+1);
+            exchange(a,i,j);
+        }
     }
 
     public static void sort(Comparable[] a) {

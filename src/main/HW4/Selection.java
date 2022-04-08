@@ -3,6 +3,7 @@ package main.HW4;
 public class Selection{
     public static void sort(Comparable [] a){
         int lth = a.length;
+
         for (int i = 0; i != lth; i++){
             int min = i;
             for (int j = i+1; j != lth; j++){
