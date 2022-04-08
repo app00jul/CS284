@@ -1,6 +1,6 @@
 package main.HW4;
 
-public class Bubble{
+public class Bubble {
     public static void sort(Comparable [] a){
         int lth = a.length;
 

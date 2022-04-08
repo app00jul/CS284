@@ -2,7 +2,7 @@ package main.HW4;
 
 import java.util.Random;
 
-public class Quick{
+public class Quick {
     public static void shuffling(Comparable [] a){
         Random rn = new Random();
         int lth = a.length;

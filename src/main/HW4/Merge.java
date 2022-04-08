@@ -1,6 +1,6 @@
 package main.HW4;
 
-public class Merge{
+public class Merge {
     public static void sort(Comparable [] a){
         Comparable [] aux = new Comparable[a.length];
         sort(a, aux, 0, a.length - 1);

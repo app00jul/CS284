@@ -1,6 +1,6 @@
 package main.HW4;
 
-public class Insertion{
+public class Insertion {
     public static void sort(Comparable [] a){
         int lth = a.length;
         for (int i = 0; i != lth; i++){
