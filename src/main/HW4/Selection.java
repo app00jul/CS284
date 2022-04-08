@@ -2,10 +2,10 @@ package main.HW4;
 
 public class Selection{
     public static void sort(Comparable [] a){
-        int N = a.length;
-        for (int i = 0; i != N; i++){
+        int lth = a.length;
+        for (int i = 0; i != lth; i++){
             int min = i;
-            for (int j = i+1; j != N; j++){
+            for (int j = i+1; j != lth; j++){
                 if (less_than(a[j], a[min])){
                     min = j;
                 }
@@ -20,7 +20,7 @@ public class Selection{
         a[j] = swap;
     }
 
-    public static boolean less_than(Comparable v, Comparable w){
-        return v.compareTo(w) < 0;
+    public static boolean less_than(Comparable p, Comparable q){
+        return p.compareTo(q) < 0;
     }
 }

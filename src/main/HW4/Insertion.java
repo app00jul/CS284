@@ -2,8 +2,8 @@ package main.HW4;
 
 public class Insertion{
     public static void sort(Comparable [] a){
-        int N = a.length;
-        for (int i = 0; i != N; i++){
+        int lth = a.length;
+        for (int i = 0; i != lth; i++){
             for (int j = i; j > 0; j--){
                 if (less_than(a[j], a[j-1])){
                     exchange(a,j,j-1);
@@ -20,7 +20,7 @@ public class Insertion{
         a[j] = swap;
     }
 
-    public static boolean less_than(Comparable v, Comparable w){
-        return v.compareTo(w) < 0;
+    public static boolean less_than(Comparable p, Comparable q){
+        return p.compareTo(q) < 0;
     }
 }
