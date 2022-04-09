@@ -36,7 +36,7 @@ public class Merge {
         }
     }
 
-    public static boolean less_than(Comparable v, Comparable w){
-        return v.compareTo(w) < 0;
+    public static boolean less_than(Comparable p, Comparable q){
+        return p.compareTo(q) < 0;
     }
 }
