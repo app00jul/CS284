@@ -7,7 +7,7 @@ public class Selection {
         for (int i = 0; i != lth; i++){
             int min = i;
             for (int j = i+1; j != lth; j++){
-                if (less_than(a[j], a[min])){
+                if (a[j].compareTo(a[min]) > 0){
                     min = j;
                 }
             exchange(a,i,min);
@@ -19,9 +19,5 @@ public class Selection {
         Comparable swap = a[i];
         a[i] = a[j];
         a[j] = swap;
-    }
-
-    public static boolean less_than(Comparable p, Comparable q){
-        return p.compareTo(q) < 0;
     }
 }

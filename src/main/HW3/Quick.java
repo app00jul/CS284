@@ -32,13 +32,17 @@ public class Quick {
         while (true) {
 
             // find item on lo to swap
-            while (less_than(a[++i], v)) {
-                if (i == high) break;
+            while (a[++i].compareTo(v) > 0) {
+                if (i == high) {
+                    break;
+                }
             }
 
             // find item on hi to swap
-            while (less_than(v, a[--j])) {
-                if (j == low) break;      // redundant since a[lo] acts as sentinel
+            while (v.compareTo(a[--j]) > 0) {
+                if (j == low) {
+                    break;
+                }
             }
 
             // check if pointers cross
@@ -48,7 +52,6 @@ public class Quick {
         }
 
         exchange(a, low, j);
-
         return j;
     }
 
@@ -77,9 +80,5 @@ public class Quick {
         Comparable swap = a[i];
         a[i] = a[j];
         a[j] = swap;
-    }
-
-    public static boolean less_than(Comparable p, Comparable q){
-        return p.compareTo(q) < 0;
     }
 }

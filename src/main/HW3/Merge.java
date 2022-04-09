@@ -28,15 +28,11 @@ public class Merge {
                 a[k] = aux[j++];
             } else if (j > high){
                 a[k] = aux[i++];
-            } else if (less_than(aux[j],aux[i])){
+            } else if (a[i].compareTo(a[j]) > 0){
                 a[k] = aux[j++];
             } else{
                 a[k] = aux[i++];
             }
         }
-    }
-
-    public static boolean less_than(Comparable p, Comparable q){
-        return p.compareTo(q) < 0;
     }
 }

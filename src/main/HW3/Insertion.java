@@ -5,7 +5,7 @@ public class Insertion {
         int lth = a.length;
         for (int i = 0; i != lth; i++){
             for (int j = i; j > 0; j--){
-                if (less_than(a[j], a[j-1])){
+                if (a[i].compareTo(a[j]) > 0){
                     exchange(a,j,j-1);
                 } else{
                     break;
@@ -18,9 +18,5 @@ public class Insertion {
         Comparable swap = a[i];
         a[i] = a[j];
         a[j] = swap;
-    }
-
-    public static boolean less_than(Comparable p, Comparable q){
-        return p.compareTo(q) < 0;
     }
 }
