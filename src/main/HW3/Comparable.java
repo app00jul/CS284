@@ -1,4 +1,4 @@
-package main.HW4;
+package main.HW3;
 
 public interface Comparable<Item> {
     public int compareTo(Item that);

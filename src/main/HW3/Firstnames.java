@@ -1,4 +1,4 @@
-package main.HW4;
+package main.HW3;
 
 public class Firstnames implements Comparable<Firstnames>{
     private String name;

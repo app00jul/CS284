@@ -1,4 +1,4 @@
-package main.HW4;
+package main.HW3;
 
 import java.util.Random;
 

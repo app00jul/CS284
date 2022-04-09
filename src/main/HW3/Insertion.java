@@ -1,16 +1,15 @@
-package main.HW4;
+package main.HW3;
 
-public class Selection {
+public class Insertion {
     public static void sort(Comparable [] a){
         int lth = a.length;
-
         for (int i = 0; i != lth; i++){
-            int min = i;
-            for (int j = i+1; j != lth; j++){
-                if (less_than(a[j], a[min])){
-                    min = j;
+            for (int j = i; j > 0; j--){
+                if (less_than(a[j], a[j-1])){
+                    exchange(a,j,j-1);
+                } else{
+                    break;
                 }
-            exchange(a,i,min);
             }
         }
     }
