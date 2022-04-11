@@ -1,5 +1,7 @@
 package main.HW3;
 
+import java.util.*;
+
 public class Shuffling {
     private static int swaps = 0;
 
@@ -19,6 +21,9 @@ public class Shuffling {
             // or choose index uniformly in [i, n-1]
 //            swap(a, i, r);
 //            count the number of swaps
+
+            swap(a,i,rand);
+            swaps ++;
         }
     }
 }
