@@ -19,7 +19,9 @@ public class Quick {
     }
 
     private static void sort(Comparable[] a, int low, int high) {
-        if (high <= low) return;
+        if (high <= low) {
+            return;
+        }
         int j = partition(a, low, high);
         sort(a, low, j-1);
         sort(a, j+1, high);
@@ -29,24 +31,23 @@ public class Quick {
         int i = low;
         int j = high + 1;
         Comparable v = a[low];
-        while (true) {
 
-            // find item on lo to swap
+        while (true) {
             while (a[++i].compareTo(v) > 0) {
                 if (i == high) {
                     break;
                 }
             }
 
-            // find item on hi to swap
             while (v.compareTo(a[--j]) > 0) {
                 if (j == low) {
                     break;
                 }
             }
 
-            // check if pointers cross
-            if (i >= j) break;
+            if (i >= j) {
+                break;
+            }
 
             exchange(a, i, j);
         }
