@@ -1,7 +1,5 @@
 package main.HW3;
 
-import java.util.*;
-
 public class Shuffling {
     private static int swaps = 0;
 
