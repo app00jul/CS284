@@ -3,8 +3,7 @@ package main.HW3;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Locale;
-import java.util.Random;
+
 
 public class Dates implements Comparable<Dates>{
     private String date;
@@ -15,9 +14,12 @@ public class Dates implements Comparable<Dates>{
 //      randomly generate a year, month and day
 //      range of year: [1000, 2022]
 //      range of month: [1, 12] ([0, 11] for calendar)
-        LocalDate start_date = LocalDate.of(1000,1,1);
-        long start = start_date.toEpochDay();
-        System.out.println(start);
+        int year = (int) (Math.random() * (2000-1000 + 1) + 1000);
+        int month = (int) (Math.random() * (11-0 + 1));
+        int day = (int) (Math.random() * (31-1 + 1) + 1);
+
+        calendar.set(year, month, day);
+        date = format.format(calendar.getTime());
     }
 
     public String toString() {

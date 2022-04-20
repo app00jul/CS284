@@ -23,6 +23,8 @@ public class Firstnames implements Comparable<Firstnames> {
         for (int i = 0; i != length; i++){
             s.append((char) ((int) (Math.random() * (122-97+1)) + 97));
         }
+
+        name = s.toString();
     }
 
     public String toString() {
