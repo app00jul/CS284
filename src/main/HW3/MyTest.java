@@ -117,7 +117,7 @@ public class MyTest {
 //      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
-        //Shuffling.shuffle(dates);
+        Shuffling.shuffle(dates,1,10);
         System.out.println(Arrays.toString(dates));
         Bubble.sort(dates);
         System.out.println(Arrays.toString(dates));
@@ -137,7 +137,7 @@ public class MyTest {
 //      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
-        //Shuffling.shuffle(dates);
+        Shuffling.shuffle(dates,1,10);
         System.out.println(Arrays.toString(dates));
         Insertion.sort(dates);
         System.out.println(Arrays.toString(dates));
@@ -157,7 +157,7 @@ public class MyTest {
 //      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
-        //Shuffling.shuffle(dates);
+        Shuffling.shuffle(dates,1,10);
         System.out.println(Arrays.toString(dates));
         Merge.sort(dates);
         System.out.println(Arrays.toString(dates));
@@ -177,7 +177,7 @@ public class MyTest {
 //      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
-        //Shuffling.shuffle(dates);
+        Shuffling.shuffle(dates,1,10);
         System.out.println(Arrays.toString(dates));
         Quick.sort(dates);
         System.out.println(Arrays.toString(dates));
@@ -197,7 +197,7 @@ public class MyTest {
 //      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
-        //Shuffling.shuffle(dates);
+        Shuffling.shuffle(dates,1,10);
         System.out.println(Arrays.toString(dates));
         Selection.sort(dates);
         System.out.println(Arrays.toString(dates));
