@@ -5,6 +5,14 @@ public class Firstnames implements Comparable<Firstnames> {
 
     public Firstnames() {
         StringBuilder s = new StringBuilder();
+        int length = ((int) (Math.random() * (7-3+1))+3);
+
+        s.append((char) ((int) (Math.random() * (90-65+1)) + 65));
+
+        for (int i = 0; i != length; i++){
+            s.append((char) ((int) (Math.random() * (122-97+1)) + 97));
+        }
+
 ////        the first character of a name should be uppercase.
 ////        'A' = 65
 ////        'Z' = 90
