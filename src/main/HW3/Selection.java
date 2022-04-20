@@ -16,6 +16,7 @@ public class Selection {
             swaps++;
             }
         }
+        System.out.println(swaps + " swaps");
     }
 
     public static void exchange(Comparable [] a, int i, int j){

@@ -40,6 +40,7 @@ public class Merge {
                 swaps++;
             }
         }
+        System.out.println(swaps + " swaps");
     }
 
     public int getSwaps(){

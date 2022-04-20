@@ -23,5 +23,6 @@ public class Shuffling {
             swap(a,i,rand);
             swaps ++;
         }
+        System.out.println(swaps + " swaps");
     }
 }

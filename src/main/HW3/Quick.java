@@ -18,6 +18,7 @@ public class Quick {
     public static void sort(Comparable[] a) {
         Quick.shuffling(a);
         sort(a, 0, a.length - 1);
+        System.out.println(swaps + " swaps");
     }
 
     private static void sort(Comparable[] a, int low, int high) {

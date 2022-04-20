@@ -15,7 +15,7 @@ public class Insertion {
                 }
             }
         }
-        System.out.println(swaps + "swaps");
+        System.out.println(swaps + " swaps");
     }
 
     public static void exchange(Comparable [] a, int i, int j){

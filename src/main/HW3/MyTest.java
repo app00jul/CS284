@@ -3,7 +3,7 @@ package main.HW3;
 import java.util.Arrays;
 
 public class MyTest {
-    public static void names_bubble(String[] args) {
+    public static void main(String[] args) {
         //    test names
         //    generate an array of first names
         Firstnames[] names = new Firstnames[10];
