@@ -18,7 +18,7 @@ public class MyTest {
         Bubble.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(names));
     }
@@ -38,7 +38,7 @@ public class MyTest {
         Insertion.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(names));
     }
@@ -58,7 +58,7 @@ public class MyTest {
         Merge.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(names));
     }
@@ -78,7 +78,7 @@ public class MyTest {
         Quick.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(names));
     }
@@ -98,7 +98,7 @@ public class MyTest {
         Selection.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(names));
     }
@@ -114,7 +114,7 @@ public class MyTest {
         Bubble.sort(dates);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
         //Shuffling.shuffle(dates);
@@ -134,7 +134,7 @@ public class MyTest {
         Insertion.sort(dates);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
         //Shuffling.shuffle(dates);
@@ -154,7 +154,7 @@ public class MyTest {
         Merge.sort(dates);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
         //Shuffling.shuffle(dates);
@@ -174,7 +174,7 @@ public class MyTest {
         Quick.sort(dates);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
         //Shuffling.shuffle(dates);
@@ -194,7 +194,7 @@ public class MyTest {
         Selection.sort(dates);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//        1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
+//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
         System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
         System.out.println(Arrays.toString(dates));
         //Shuffling.shuffle(dates);

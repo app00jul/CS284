@@ -3,6 +3,8 @@ package main.HW3;
 import java.util.Random;
 
 public class Quick {
+    private static int swaps = 0;
+
     public static void shuffling(Comparable [] a){
         Random rn = new Random();
         int lth = a.length;
@@ -53,6 +55,7 @@ public class Quick {
         }
 
         exchange(a, low, j);
+        swaps++;
         return j;
     }
 
@@ -81,5 +84,9 @@ public class Quick {
         Comparable swap = a[i];
         a[i] = a[j];
         a[j] = swap;
+    }
+
+    public int getSwaps(){
+        return this.swaps;
     }
 }

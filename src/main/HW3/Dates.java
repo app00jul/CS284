@@ -12,9 +12,9 @@ public class Dates implements Comparable<Dates>{
     public Dates() {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
         Calendar calendar = Calendar.getInstance();
-//        randomly generate a year, month and day
-//        range of year: [1000, 2022]
-//        range of month: [1, 12] ([0, 11] for calendar)
+//      randomly generate a year, month and day
+//      range of year: [1000, 2022]
+//      range of month: [1, 12] ([0, 11] for calendar)
         LocalDate start_date = LocalDate.of(1000,1,1);
         long start = start_date.toEpochDay();
         System.out.println(start);

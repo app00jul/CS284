@@ -1,6 +1,8 @@
 package main.HW3;
 
 public class Merge {
+    private static int swaps = 0;
+
     public static void sort(Comparable [] a){
         Comparable [] aux = new Comparable[a.length];
         sort(a, aux, 0, a.length - 1);
@@ -26,13 +28,21 @@ public class Merge {
         for (int k = low; k <= high; k++){
             if (i > mid){
                 a[k] = aux[j++];
+                swaps++;
             } else if (j > high){
                 a[k] = aux[i++];
+                swaps++;
             } else if (a[i].compareTo(a[j]) > 0){
                 a[k] = aux[j++];
+                swaps++;
             } else{
                 a[k] = aux[i++];
+                swaps++;
             }
         }
+    }
+
+    public int getSwaps(){
+        return this.swaps;
     }
 }

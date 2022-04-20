@@ -1,6 +1,8 @@
 package main.HW3;
 
 public class Selection {
+    private static int swaps = 0;
+
     public static void sort(Comparable [] a){
         int lth = a.length;
 
@@ -11,6 +13,7 @@ public class Selection {
                     min = j;
                 }
             exchange(a,i,min);
+            swaps++;
             }
         }
     }
@@ -19,5 +22,9 @@ public class Selection {
         Comparable swap = a[i];
         a[i] = a[j];
         a[j] = swap;
+    }
+
+    public int getSwaps(){
+        return this.swaps;
     }
 }
