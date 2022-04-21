@@ -5,26 +5,19 @@ public class Insertion {
 
     public static void sort(Comparable [] a){
         int lth = a.length;
+
         for (int i = 0; i != lth; i++){
-            for (int j = i; j > 0; j--){
-                if (a[i].compareTo(a[j]) > 0){
-                    exchange(a,j,j-1);
-                    swaps++;
-                } else{
-                    break;
-                }
+            for (int j = i; j > 0 && a[j].compareTo(a[j-1]) < 0; j--){
+                Comparable swap = a[j];
+                a[j] = a[j-1];
+                a[j-1] = swap;
+                swaps++;
             }
         }
         System.out.println(swaps + " swaps");
     }
 
-    public static void exchange(Comparable [] a, int i, int j){
-        Comparable swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
-    public int getSwaps(){
-        return this.swaps;
+    public static int getSwap() {
+        return swaps;
     }
 }

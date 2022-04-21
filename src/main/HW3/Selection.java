@@ -25,7 +25,7 @@ public class Selection {
         a[j] = swap;
     }
 
-    public int getSwaps(){
-        return this.swaps;
+    public static int getSwap() {
+        return swaps;
     }
 }

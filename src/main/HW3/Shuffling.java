@@ -15,14 +15,13 @@ public class Shuffling {
             int range = max - min + 1;
             int rand = (int)(Math.random() * range) + min;
 
-            // choose index uniformly in [0, i]
-            // or choose index uniformly in [i, n-1]
-//            swap(a, i, r);
-//            count the number of swaps
-
             swap(a,i,rand);
             swaps ++;
         }
         System.out.println(swaps + " swaps");
+    }
+
+    public static int getSwap() {
+        return swaps;
     }
 }

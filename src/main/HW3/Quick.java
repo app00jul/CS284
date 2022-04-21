@@ -53,32 +53,12 @@ public class Quick {
             }
 
             exchange(a, i, j);
+            swaps++;
         }
 
         exchange(a, low, j);
         swaps++;
         return j;
-    }
-
-    public static Comparable select(Comparable[] a, int k) {
-        if (k < 0 || k >= a.length) {
-            throw new IllegalArgumentException("index is not between 0 and " + a.length + ": " + k);
-        }
-        Quick.shuffling(a);
-        int low = 0;
-        int high = a.length - 1;
-        while (high > low) {
-            int i = partition(a, low, high);
-
-            if (i > k) {
-                high = i - 1;
-            } else if (i < k) {
-                low = i + 1;
-            } else {
-                return a[i];
-            }
-        }
-        return a[low];
     }
 
     public static void exchange(Comparable [] a, int i, int j){
@@ -87,7 +67,8 @@ public class Quick {
         a[j] = swap;
     }
 
-    public int getSwaps(){
-        return this.swaps;
+    public static int getSwap() {
+        return swaps;
     }
+
 }

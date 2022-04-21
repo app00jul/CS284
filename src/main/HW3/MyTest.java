@@ -3,203 +3,255 @@ package main.HW3;
 import java.util.Arrays;
 
 public class MyTest {
-    public static void main(String[] args) {
-        //    test names
-        //    generate an array of first names
-        Firstnames[] names = new Firstnames[10];
+    public static void names_bubble(String[] args) {
+        long start = System.nanoTime();
+        System.out.println("Bubble sort: names");
 
-        for (int i = 0; i < names.length; i++) {
-            names[i] = new Firstnames();
+        for (int i = 0; i != 100; i++) {
+            Firstnames[] names = new Firstnames[10];
+            for (int j = 0; j != names.length; j++){
+                names[j] = new Firstnames();
+            }
+
+            Bubble.sort(names);
+            System.out.println(Arrays.toString(names));
         }
 
-        System.out.println("Bubble sort: names");
-        System.out.println(Arrays.toString(names));
-        long start = System.nanoTime();
-        Bubble.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(names));
+
+        System.out.println(Bubble.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 
     public static void names_insertion(String[] args) {
-        //    test names
-        //    generate an array of first names
-        Firstnames[] names = new Firstnames[10];
+        long start = System.nanoTime();
+        System.out.println("Insertion sort: names");
 
-        for (int i = 0; i < names.length; i++) {
-            names[i] = new Firstnames();
+        for (int i = 0; i != 100; i++) {
+            Firstnames[] names = new Firstnames[10];
+            for (int j = 0; j != names.length; j++){
+                names[j] = new Firstnames();
+            }
+
+            Insertion.sort(names);
+            System.out.println(Arrays.toString(names));
         }
 
-        System.out.println("Insertion sort: names");
-        System.out.println(Arrays.toString(names));
-        long start = System.nanoTime();
-        Insertion.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(names));
+
+        System.out.println(Insertion.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 
     public static void names_merge(String[] args) {
-        //    test names
-        //    generate an array of first names
-        Firstnames[] names = new Firstnames[10];
+        long start = System.nanoTime();
+        System.out.println("Merge sort: names");
 
-        for (int i = 0; i < names.length; i++) {
-            names[i] = new Firstnames();
+        for (int i = 0; i != 100; i++) {
+            Firstnames[] names = new Firstnames[10];
+            for (int j = 0; j != names.length; j++){
+                names[j] = new Firstnames();
+            }
+
+            Merge.sort(names);
+            System.out.println(Arrays.toString(names));
         }
 
-        System.out.println("Merge sort: names");
-        System.out.println(Arrays.toString(names));
-        long start = System.nanoTime();
-        Merge.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(names));
+
+        System.out.println(Merge.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 
     public static void names_quick(String[] args) {
-        //    test names
-        //    generate an array of first names
-        Firstnames[] names = new Firstnames[10];
+        long start = System.nanoTime();
+        System.out.println("Quick sort: names");
 
-        for (int i = 0; i < names.length; i++) {
-            names[i] = new Firstnames();
+        for (int i = 0; i != 100; i++) {
+            Firstnames[] names = new Firstnames[10];
+            for (int j = 0; j != names.length; j++){
+                names[j] = new Firstnames();
+            }
+
+            Quick.sort(names);
+            System.out.println(Arrays.toString(names));
         }
 
-        System.out.println("Quick sort: names");
-        System.out.println(Arrays.toString(names));
-        long start = System.nanoTime();
-        Quick.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(names));
+
+        System.out.println(Quick.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 
     public static void names_selection(String[] args) {
-        //    test names
-        //    generate an array of first names
-        Firstnames[] names = new Firstnames[10];
+        long start = System.nanoTime();
+        System.out.println("Selection sort: names");
 
-        for (int i = 0; i < names.length; i++) {
-            names[i] = new Firstnames();
+        for (int i = 0; i != 100; i++) {
+            Firstnames[] names = new Firstnames[10];
+            for (int j = 0; j != names.length; j++){
+                names[j] = new Firstnames();
+            }
+
+            Selection.sort(names);
+            System.out.println(Arrays.toString(names));
         }
 
-        System.out.println("Selection sort: names");
-        System.out.println(Arrays.toString(names));
-        long start = System.nanoTime();
-        Selection.sort(names);
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime / Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(names));
+
+        System.out.println(Selection.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
+    }
+
+    public static void names_shuffling(String[] args) {
+        long start = System.nanoTime();
+        System.out.println("Shuffling: names");
+
+        for (int i = 0; i != 100; i++) {
+            Firstnames[] names = new Firstnames[10];
+            for (int j = 0; j != names.length; j++){
+                names[j] = new Firstnames();
+            }
+
+            Shuffling.shuffle(names,1,10);
+            System.out.println(Arrays.toString(names));
+        }
+
+        long end = System.nanoTime();
+        long wallClockTime = end - start;
+
+        System.out.println(Shuffling.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 
     public static void dates_bubble(String[] args) {
-        Dates[] dates = new Dates[10];
-        for (int i = 0; i < dates.length; i++){
-            dates[i] = new Dates();
-        }
-        System.out.println("Bubble sort: dates");
-        System.out.println(Arrays.toString(dates));
         long start = System.nanoTime();
-        Bubble.sort(dates);
+        System.out.println("Bubble sort: dates");
+
+        for (int i = 0; i != 100; i++) {
+            Dates[] dates = new Dates[10];
+            for (int j = 0; j != dates.length; j++){
+                dates[j] = new Dates();
+            }
+
+            Bubble.sort(dates);
+            System.out.println(Arrays.toString(dates));
+        }
+
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(dates));
-        Shuffling.shuffle(dates,1,10);
-        System.out.println(Arrays.toString(dates));
-        Bubble.sort(dates);
-        System.out.println(Arrays.toString(dates));
+
+        System.out.println(Bubble.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 
     public static void dates_insertion(String[] args) {
-        Dates[] dates = new Dates[10];
-        for (int i = 0; i < dates.length; i++){
-            dates[i] = new Dates();
-        }
-        System.out.println("Insertion sort: dates");
-        System.out.println(Arrays.toString(dates));
         long start = System.nanoTime();
-        Insertion.sort(dates);
+        System.out.println("Insertion sort: dates");
+
+        for (int i = 0; i != 100; i++) {
+            Dates[] dates = new Dates[10];
+            for (int j = 0; j != dates.length; j++){
+                dates[j] = new Dates();
+            }
+
+            Insertion.sort(dates);
+            System.out.println(Arrays.toString(dates));
+        }
+
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(dates));
-        Shuffling.shuffle(dates,1,10);
-        System.out.println(Arrays.toString(dates));
-        Insertion.sort(dates);
-        System.out.println(Arrays.toString(dates));
+
+        System.out.println(Insertion.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 
     public static void dates_merge(String[] args) {
-        Dates[] dates = new Dates[10];
-        for (int i = 0; i < dates.length; i++){
-            dates[i] = new Dates();
-        }
-        System.out.println("Merge sort: dates");
-        System.out.println(Arrays.toString(dates));
         long start = System.nanoTime();
-        Merge.sort(dates);
+        System.out.println("Merge sort: dates");
+
+        for (int i = 0; i != 100; i++) {
+            Dates[] dates = new Dates[10];
+            for (int j = 0; j != dates.length; j++){
+                dates[j] = new Dates();
+            }
+
+            Merge.sort(dates);
+            System.out.println(Arrays.toString(dates));
+        }
+
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(dates));
-        Shuffling.shuffle(dates,1,10);
-        System.out.println(Arrays.toString(dates));
-        Merge.sort(dates);
-        System.out.println(Arrays.toString(dates));
+
+        System.out.println(Bubble.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 
     public static void dates_quick(String[] args) {
-        Dates[] dates = new Dates[10];
-        for (int i = 0; i < dates.length; i++){
-            dates[i] = new Dates();
-        }
-        System.out.println("Quick sort: dates");
-        System.out.println(Arrays.toString(dates));
         long start = System.nanoTime();
-        Quick.sort(dates);
+        System.out.println("Quick sort: dates");
+
+        for (int i = 0; i != 100; i++) {
+            Dates[] dates = new Dates[10];
+            for (int j = 0; j != dates.length; j++){
+                dates[j] = new Dates();
+            }
+
+            Quick.sort(dates);
+            System.out.println(Arrays.toString(dates));
+        }
+
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(dates));
-        Shuffling.shuffle(dates,1,10);
-        System.out.println(Arrays.toString(dates));
-        Quick.sort(dates);
-        System.out.println(Arrays.toString(dates));
+
+        System.out.println(Quick.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 
     public static void dates_selection(String[] args) {
-        Dates[] dates = new Dates[10];
-        for (int i = 0; i < dates.length; i++){
-            dates[i] = new Dates();
-        }
-        System.out.println("Selection sort: dates");
-        System.out.println(Arrays.toString(dates));
         long start = System.nanoTime();
-        Selection.sort(dates);
+        System.out.println("Selection sort: dates");
+
+        for (int i = 0; i != 100; i++) {
+            Dates[] dates = new Dates[10];
+            for (int j = 0; j != dates.length; j++){
+                dates[j] = new Dates();
+            }
+
+            Selection.sort(dates);
+            System.out.println(Arrays.toString(dates));
+        }
+
         long end = System.nanoTime();
         long wallClockTime = end - start;
-//      1 second = 1_000_000_000 nanosecond (10^9 : Math.pow(10, 9))
-        System.out.println(wallClockTime/Math.pow(10, 9) + "seconds");
-        System.out.println(Arrays.toString(dates));
-        Shuffling.shuffle(dates,1,10);
-        System.out.println(Arrays.toString(dates));
-        Selection.sort(dates);
-        System.out.println(Arrays.toString(dates));
+
+        System.out.println(Selection.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
+    }
+
+    public static void dates_shuffling(String[] args) {
+        long start = System.nanoTime();
+        System.out.println("Shuffling: dates");
+
+        for (int i = 0; i != 100; i++) {
+            Dates[] dates = new Dates[10];
+            for (int j = 0; j != dates.length; j++){
+                dates[j] = new Dates();
+            }
+
+            Shuffling.shuffle(dates,1,10);
+            System.out.println(Arrays.toString(dates));
+        }
+
+        long end = System.nanoTime();
+        long wallClockTime = end - start;
+
+        System.out.println(Shuffling.getSwap()/100);
+        System.out.println((wallClockTime / Math.pow(10, 9))/100 + "seconds");
     }
 }

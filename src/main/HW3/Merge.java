@@ -43,7 +43,7 @@ public class Merge {
         System.out.println(swaps + " swaps");
     }
 
-    public int getSwaps(){
-        return this.swaps;
+    public static int getSwap() {
+        return swaps;
     }
 }

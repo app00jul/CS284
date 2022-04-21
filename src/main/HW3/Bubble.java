@@ -8,7 +8,7 @@ public class Bubble {
 
         for (int i = 0; i != lth-1 ; i++){
             for (int j = 0; j < lth-i-1; j++){
-                if (less_than(a[j+1], a[j])){
+                if (a[i].compareTo(a[j]) > 0){
                     Comparable temp = a[j];
                     a[j] = a[j+1];
                     a[j+1] = temp;
@@ -19,12 +19,9 @@ public class Bubble {
         System.out.println(swaps + " swaps");
     }
 
-    public static boolean less_than(Comparable p, Comparable q){
-        return p.compareTo(q) < 0;
+    public static int getSwap() {
+        return swaps;
     }
 
-    public int getSwaps(){
-        return this.swaps;
-    }
 }
 
