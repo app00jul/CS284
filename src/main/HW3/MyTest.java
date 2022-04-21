@@ -118,7 +118,7 @@ public class MyTest {
                 names[j] = new Firstnames();
             }
 
-            Shuffling.shuffle(names,1,10);
+            Shuffling.shuffle(names);
             System.out.println(Arrays.toString(names));
         }
 
@@ -244,7 +244,7 @@ public class MyTest {
                 dates[j] = new Dates();
             }
 
-            Shuffling.shuffle(dates,1,10);
+            Shuffling.shuffle(dates);
             System.out.println(Arrays.toString(dates));
         }
 

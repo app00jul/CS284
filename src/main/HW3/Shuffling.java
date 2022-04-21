@@ -9,11 +9,10 @@ public class Shuffling {
         arr[j] = temp;
     }
 
-    public static void shuffle(Comparable[] a, int min, int max) {
+    public static void shuffle(Comparable[] a) {
         int lth = a.length;
         for (int i = 0; i != lth; i++) {
-            int range = max - min + 1;
-            int rand = (int)(Math.random() * range) + min;
+            int rand = (int) (Math.random()* (i+1));
 
             swap(a,i,rand);
             swaps ++;
