@@ -28,9 +28,7 @@ public class BinarySearchTree<E extends Comparable<E>>{
     public Node insert(Node root, int newData) {
         // Base Case: root is null or not
         if (root == null) {
-            // Insert the new data, if root is null.
             root = new Node(newData);
-            // return the current root to his sub tree
             return root;
         }
         // Here checking for root data is greater or equal to newData or not
@@ -45,6 +43,7 @@ public class BinarySearchTree<E extends Comparable<E>>{
     }
 
     public void inorder() {
+        System.out.println("Inorder:");
         inorder(root);
     }
 
@@ -55,13 +54,38 @@ public class BinarySearchTree<E extends Comparable<E>>{
         inorder(root.left);
 
         //then go for root node
-        System.out.print(root.value + " ");
+        System.out.print(root.value + ", ");
 
         //next traverse right subtree recursively
         inorder(root.right);
     }
 
+    public void display() {
+        System.out.println("The output of you program is: ");
+        display(root);
+    }
+
+    public void display(Node root) {
+        if (root == null)
+            return;
+        System.out.print(root.value + "     ");
+        display(root.left);
+
+        //then go for root node
+        System.out.println();
+
+        //next traverse right subtree recursively
+        display(root.right);
+    }
+
     public static void main(String args[]){
-        System.out.println("Hello there!");
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.insert(4);
+        tree.insert(8);
+        tree.insert(1);
+        tree.insert(2);
+        tree.insert(7);
+        tree.display();
+        tree.inorder();
     }
 }
