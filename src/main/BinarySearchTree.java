@@ -3,59 +3,62 @@ package main;
 import com.sun.source.tree.BinaryTree;
 
 public class BinarySearchTree<E extends Comparable<E>>{
-    protected class Node<E>{
+    public class Node{
         public int value;
-        Node<E> left;
-        Node<E> right;
-        int depth;
+        Node left;
+        Node right;
 
         public Node(int value){
             this.value = value;
             this.left = null;
             this.right = null;
         }
-
-        protected void set_depth(int depth) {
-            this.depth = depth;
-        }
-
-        protected int get_depth() {
-            return this.depth;
-        }
     }
 
-    public Node<E> root;
+    public Node root;
 
-    public void insert_value(double k, BinaryTree T){
-        Node<E> parent = find_parent(k, T.root);
-
-        if (k <= parent.value){
-            if (parent.left == null){
-                //TO DO
-            } else{
-                //TO DO
-            }
-        } else{
-            if (parent.right == null){
-                //TO DO
-            } else{
-                //TO DO
-            }
-        }
+    public BinarySearchTree() {
+        this.root = null;
     }
 
-    public void find_parent(double k, Node v){
-        if (k <= v.value && T.left(v) == null){
-            return v;
-        } else if (k > v.value && T.right(v) == null){
-            return v;
-        } else{
-            if (k <= v.value){
-                find_parent(k, T.left(v));
-            } else{
-                find_parent(k, T.right(v));
-            }
+    public void insert(int newData) {
+        this.root = insert(root, newData);
+    }
+
+    public Node insert(Node root, int newData) {
+        // Base Case: root is null or not
+        if (root == null) {
+            // Insert the new data, if root is null.
+            root = new Node(newData);
+            // return the current root to his sub tree
+            return root;
         }
+        // Here checking for root data is greater or equal to newData or not
+        else if (root.value >= newData) {
+            // if current root data is greater than the new data then now process the left sub-tree
+            root.left = insert(root.left, newData);
+        } else {
+            // if current root data is less than the new data then now process the right sub-tree
+            root.right = insert(root.right, newData);
+        }
+        return root;
+    }
+
+    public void inorder() {
+        inorder(root);
+    }
+
+    public void inorder(Node root) { // need to do inorder instead
+        if (root == null)
+            return;
+        //first traverse left subtree recursively
+        inorder(root.left);
+
+        //then go for root node
+        System.out.print(root.value + " ");
+
+        //next traverse right subtree recursively
+        inorder(root.right);
     }
 
     public static void main(String args[]){
