@@ -77,21 +77,18 @@ public class BinarySearchTree<E extends Comparable<E>>{
     public void display(Node root) {
         if (root == null)
             return;
-        int max_height = root.get_height();
+        int max_height = this.root.get_height();
         display(root.right);
 
         //then go for root node
-        if (root.get_height() == 0){
-            System.out.println("Max:" + max_height);
+        int current_height = max_height - root.get_height();
+        if (current_height == 0){
             System.out.println(root.value);
-        } else if (root.get_height() == 1) {
-            System.out.println("Max:" + max_height);
+        } else if (current_height == 1) {
             System.out.println("    " + root.value);
-        } else if (root.get_height() == 2) {
-            System.out.println("Max:" + max_height);
+        } else if (current_height == 2) {
             System.out.println("        " + root.value);
-        } else if (root.get_height() == 3) {
-            System.out.println("Max:" + max_height);
+        } else if (current_height == 3) {
             System.out.println("            " + root.value);
         }
 
