@@ -13,6 +13,18 @@ public class BinarySearchTree<E extends Comparable<E>>{
             this.left = null;
             this.right = null;
         }
+
+        public int get_height(){
+            return height(this);
+        }
+
+        public int height(Node node){
+            if (node == null){
+                return -1;
+            } else {
+                return 1 + Math.max(height(node.left), height(node.right));
+            }
+        }
     }
 
     public Node root;
@@ -47,16 +59,13 @@ public class BinarySearchTree<E extends Comparable<E>>{
         inorder(root);
     }
 
-    public void inorder(Node root) { // need to do inorder instead
+    public void inorder(Node root) {
         if (root == null)
             return;
-        //first traverse left subtree recursively
         inorder(root.left);
 
-        //then go for root node
-        System.out.print(root.value + ", ");
+        System.out.print(root.value + "  ");
 
-        //next traverse right subtree recursively
         inorder(root.right);
     }
 
@@ -68,24 +77,38 @@ public class BinarySearchTree<E extends Comparable<E>>{
     public void display(Node root) {
         if (root == null)
             return;
-        System.out.print(root.value + "     ");
-        display(root.left);
+        int max_height = root.get_height();
+        display(root.right);
 
         //then go for root node
-        System.out.println();
+        if (root.get_height() == 0){
+            System.out.println("Max:" + max_height);
+            System.out.println(root.value);
+        } else if (root.get_height() == 1) {
+            System.out.println("Max:" + max_height);
+            System.out.println("    " + root.value);
+        } else if (root.get_height() == 2) {
+            System.out.println("Max:" + max_height);
+            System.out.println("        " + root.value);
+        } else if (root.get_height() == 3) {
+            System.out.println("Max:" + max_height);
+            System.out.println("            " + root.value);
+        }
 
         //next traverse right subtree recursively
-        display(root.right);
+        display(root.left);
     }
 
     public static void main(String args[]){
         BinarySearchTree tree = new BinarySearchTree();
-        tree.insert(4);
-        tree.insert(8);
-        tree.insert(1);
+        tree.insert(5);
         tree.insert(2);
-        tree.insert(7);
+        tree.insert(6);
+        tree.insert(1);
+        tree.insert(3);
+        tree.insert(9);
         tree.display();
         tree.inorder();
     }
 }
+
