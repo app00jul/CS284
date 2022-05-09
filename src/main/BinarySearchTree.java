@@ -83,29 +83,6 @@ public class BinarySearchTree<E>{
         }
     }
 
-    /*
-    public void insert(int newData) {
-        this.root = insert(root, newData);
-    }
-
-    public Node insert(Node root, int newData) {
-        // Base Case: root is null or not
-        if (root == null) {
-            root = new Node(newData);
-            return root;
-        }
-        // Here checking for root data is greater or equal to newData or not
-        else if (root.value >= newData) {
-            // if current root data is greater than the new data then now process the left sub-tree
-            root.left = insert(root.left, newData);
-        } else {
-            // if current root data is less than the new data then now process the right sub-tree
-            root.right = insert(root.right, newData);
-        }
-        return root;
-    }
-     */
-
     public void inorder() {
         System.out.println("Inorder:");
         inorder(root);
