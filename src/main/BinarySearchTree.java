@@ -2,8 +2,6 @@ package main;
 
 import com.sun.source.tree.BinaryTree;
 
-import java.util.Stack;
-
 public class BinarySearchTree<E>{
     public class Node{
         public int value;
@@ -14,18 +12,6 @@ public class BinarySearchTree<E>{
             this.value = value;
             this.left = null;
             this.right = null;
-        }
-
-        public int get_height(){
-            return height(this);
-        }
-
-        public int height(Node node){
-            if (node == null){
-                return -1;
-            } else {
-                return 1 + Math.max(height(node.left), height(node.right));
-            }
         }
     }
 
@@ -55,7 +41,6 @@ public class BinarySearchTree<E>{
     public Node insert(int new_data) {
         Node node = new Node(new_data);
         Node current, parent;
-
 
         if (root == null) {
             root = node;
@@ -98,49 +83,18 @@ public class BinarySearchTree<E>{
         inorder(root.right);
     }
 
-
-    public void display() {
-        Stack<Node> tree = new Stack<Node>();
-        tree.push(root);
-        int numOfBlanks = 32;
-        boolean isRowEmpty = false;
-        System.out.println("\n");
-
-        while (isRowEmpty == false) {
-            Stack<Node> localStack = new Stack<Node>();
-            isRowEmpty = true;
-
-            for (int x = 0; x < numOfBlanks; x++)
-                System.out.print(" ");
-
-            while (tree.isEmpty() == false) {
-                Node temp = (Node)tree.pop();
-                if (temp != null)
-                {
-                    System.out.print(temp.value);
-                    localStack.push(temp.left);
-                    localStack.push(temp.right);
-
-                    if (temp.left != null || temp.right != null)
-                        isRowEmpty = false;
-                }
-                else {
-                    System.out.print("--");
-                    localStack.push(null);
-                    localStack.push(null);
-                }
-
-                for (int y = 0; y < numOfBlanks*2-2; y++)
-                    System.out.print(" ");
-            }
-            System.out.println();
-            numOfBlanks /= 2;
-            while (localStack.isEmpty() == false)
-                tree.push(localStack.pop());
-
+    public void print(String prefix, Node n, boolean isLeft) {
+        if (n != null) {
+            print(prefix + "     ", n.right, false);
+            System.out.println (prefix + ("") + n.value);
+            print(prefix + "     ", n.left, true);
         }
-        System.out.println();
     }
+
+    public void print() {
+        print("",this.root, false);
+    }
+
 
 
     /*
@@ -176,7 +130,7 @@ public class BinarySearchTree<E>{
         tree.insert(1);
         tree.insert(3);
         tree.insert(9);
-        tree.display();
+        tree.print();
         tree.inorder();
     }
 }
