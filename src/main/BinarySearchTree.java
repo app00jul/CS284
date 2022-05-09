@@ -2,7 +2,9 @@ package main;
 
 import com.sun.source.tree.BinaryTree;
 
-public class BinarySearchTree<E extends Comparable<E>>{
+import java.util.Stack;
+
+public class BinarySearchTree<E>{
     public class Node{
         public int value;
         Node left;
@@ -33,6 +35,55 @@ public class BinarySearchTree<E extends Comparable<E>>{
         this.root = null;
     }
 
+    public Node find(int search) {
+        Node current = root;
+
+        while (current.value != search) {
+            if (search < current.value) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+
+            if (current == null) {
+                return null;
+            }
+        }
+        return current;
+    }
+
+    public Node insert(int new_data) {
+        Node node = new Node(new_data);
+        Node current, parent;
+
+
+        if (root == null) {
+            root = node;
+            return root;
+        } else {
+            current = root;
+            while (true) {
+                parent = current;
+                if (new_data < current.value) {
+                    current = current.left;
+
+                    if (current == null) {
+                        parent.left = node;
+                        return parent;
+                    }
+                } else {
+                    current = current.right;
+
+                    if (current == null) {
+                        parent.right = node;
+                        return parent;
+                    }
+                }
+            }
+        }
+    }
+
+    /*
     public void insert(int newData) {
         this.root = insert(root, newData);
     }
@@ -53,6 +104,7 @@ public class BinarySearchTree<E extends Comparable<E>>{
         }
         return root;
     }
+     */
 
     public void inorder() {
         System.out.println("Inorder:");
@@ -69,6 +121,52 @@ public class BinarySearchTree<E extends Comparable<E>>{
         inorder(root.right);
     }
 
+
+    public void display() {
+        Stack<Node> tree = new Stack<Node>();
+        tree.push(root);
+        int numOfBlanks = 32;
+        boolean isRowEmpty = false;
+        System.out.println("\n");
+
+        while (isRowEmpty == false) {
+            Stack<Node> localStack = new Stack<Node>();
+            isRowEmpty = true;
+
+            for (int x = 0; x < numOfBlanks; x++)
+                System.out.print(" ");
+
+            while (tree.isEmpty() == false) {
+                Node temp = (Node)tree.pop();
+                if (temp != null)
+                {
+                    System.out.print(temp.value);
+                    localStack.push(temp.left);
+                    localStack.push(temp.right);
+
+                    if (temp.left != null || temp.right != null)
+                        isRowEmpty = false;
+                }
+                else {
+                    System.out.print("--");
+                    localStack.push(null);
+                    localStack.push(null);
+                }
+
+                for (int y = 0; y < numOfBlanks*2-2; y++)
+                    System.out.print(" ");
+            }
+            System.out.println();
+            numOfBlanks /= 2;
+            while (localStack.isEmpty() == false)
+                tree.push(localStack.pop());
+
+        }
+        System.out.println();
+    }
+
+
+    /*
     public void display() {
         System.out.println("The output of you program is: ");
         display(root);
@@ -77,24 +175,21 @@ public class BinarySearchTree<E extends Comparable<E>>{
     public void display(Node root) {
         if (root == null)
             return;
+
         int max_height = this.root.get_height();
+        String space = "    ";
+
         display(root.right);
 
         //then go for root node
         int current_height = max_height - root.get_height();
-        if (current_height == 0){
-            System.out.println(root.value);
-        } else if (current_height == 1) {
-            System.out.println("    " + root.value);
-        } else if (current_height == 2) {
-            System.out.println("        " + root.value);
-        } else if (current_height == 3) {
-            System.out.println("            " + root.value);
-        }
+        //System.out.println("Height: " + root.get_height());
+        System.out.println(space.repeat(current_height) + root.value);
 
         //next traverse right subtree recursively
         display(root.left);
     }
+     */
 
     public static void main(String args[]){
         BinarySearchTree tree = new BinarySearchTree();
