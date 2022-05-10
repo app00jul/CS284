@@ -21,23 +21,6 @@ public class BinarySearchTree<E>{
         this.root = null;
     }
 
-    public Node find(int search) {
-        Node current = root;
-
-        while (current.value != search) {
-            if (search < current.value) {
-                current = current.left;
-            } else {
-                current = current.right;
-            }
-
-            if (current == null) {
-                return null;
-            }
-        }
-        return current;
-    }
-
     public Node insert(int new_data) {
         Node node = new Node(new_data);
         Node current, parent;
@@ -83,44 +66,18 @@ public class BinarySearchTree<E>{
         inorder(root.right);
     }
 
-    public void print(String prefix, Node n, boolean isLeft) {
+    public void display(String prefix, Node n, boolean isLeft) {
         if (n != null) {
-            print(prefix + "     ", n.right, false);
+            display(prefix + "     ", n.right, false);
             System.out.println (prefix + ("") + n.value);
-            print(prefix + "     ", n.left, true);
+            display(prefix + "     ", n.left, true);
         }
     }
 
-    public void print() {
-        print("",this.root, false);
-    }
-
-
-
-    /*
     public void display() {
-        System.out.println("The output of you program is: ");
-        display(root);
+        display("",this.root, false);
     }
 
-    public void display(Node root) {
-        if (root == null)
-            return;
-
-        int max_height = this.root.get_height();
-        String space = "    ";
-
-        display(root.right);
-
-        //then go for root node
-        int current_height = max_height - root.get_height();
-        //System.out.println("Height: " + root.get_height());
-        System.out.println(space.repeat(current_height) + root.value);
-
-        //next traverse right subtree recursively
-        display(root.left);
-    }
-     */
 
     public static void main(String args[]){
         BinarySearchTree tree = new BinarySearchTree();
@@ -130,7 +87,7 @@ public class BinarySearchTree<E>{
         tree.insert(1);
         tree.insert(3);
         tree.insert(9);
-        tree.print();
+        tree.display();
         tree.inorder();
     }
 }
