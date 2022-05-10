@@ -66,11 +66,11 @@ public class BinarySearchTree<E>{
         inorder(root.right);
     }
 
-    public void display(String prefix, Node n, boolean isLeft) {
-        if (n != null) {
-            display(prefix + "     ", n.right, false);
-            System.out.println (prefix + ("") + n.value);
-            display(prefix + "     ", n.left, true);
+    public void display(String prefix, Node node, boolean is_left) {
+        if (node != null) {
+            display(prefix + "     ", node.right, false);
+            System.out.println (prefix + ("") + node.value);
+            display(prefix + "     ", node.left, true);
         }
     }
 
