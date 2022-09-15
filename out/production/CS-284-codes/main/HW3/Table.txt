@@ -1,0 +1,64 @@
+﻿Julian Noeske
+I pledge my honor that I have abided by the Stevens Honor System.
+
+
+Names
+	Wall clock time
+	Number of swaps
+	Complexity class
+	Bubble sort
+	1.8492189E-4 seconds
+	22
+	θ(n^2)
+	Insertion sort
+	1.6070757E-4 seconds
+	21
+	θ(n^2)
+	Merge sort
+	2.7994674E- 4 seconds
+	34
+	θ(n log(n))
+	Quick sort
+	1.9840507E- 4seconds
+	18
+	θ(n log(n))
+	Selection sort
+	1.75548859E-4 seconds
+	45
+	θ(n^2)
+	Shuffling
+	1.9502195E-4 seconds
+	10
+	0((n+1)!)
+	
+
+
+
+Dates
+	Wall clock time
+	Number of swaps
+	Complexity class
+	Bubble sort
+	0.00109340994 seconds
+	22
+	θ(n^2)
+	Insertion sort
+	0.00121949105 seconds
+	22
+	θ(n^2)
+	Merge sort
+	0.00126928044 seconds
+	34
+	θ(n log(n))
+	Quick sort
+	9.187951E-4 seconds
+	17
+	θ(n log(n))
+	Selection sort
+	0.00101496173999 seconds
+	45
+	θ(n^2)
+	Shuffling
+	0.00102718804 seconds
+	10
+	θ((n+1)!)
