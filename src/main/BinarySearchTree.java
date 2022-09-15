@@ -53,6 +53,7 @@ public class BinarySearchTree<E>{
 
     public void inorder() {
         System.out.println("Inorder:");
+
         inorder(root);
     }
 
